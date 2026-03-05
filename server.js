@@ -39,18 +39,18 @@ app.use(express.static(path.join(__dirname, "./client/dist")));
 app.use("/admin", express.static(path.join(__dirname, "../doc-app-admin-panel/dist")));
 
 //admin routes
-app.get("/admin/:path(*)", function (req, res) {
+app.use("/admin", function (req, res) {
   res.sendFile(path.join(__dirname, "../doc-app-admin-panel/dist/index.html"));
 });
 
 //user routes
-app.get("/:path(*)", function (req, res) {
+app.use(function (req, res) {
   res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello from Server");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello from Server");
+// });
 
 const PORT = process.env.PORT || 5000;
 
