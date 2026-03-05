@@ -32,19 +32,19 @@ app.use("/api/v1/doctor", doctorRoutes);
 app.use("/api/v1/appointment", appointmentRoutes);
 app.use("/api/v1/webmessage", webMsgRoutes);
 
-// user frontend
-app.use(express.static(path.join(__dirname, "./client/dist")));
-
 // admin frontend
 app.use("/admin", express.static(path.join(__dirname, "./doc-app-admin-panel/dist")));
 
 //admin routes
-app.use("/admin", function (req, res) {
+app.get("/admin*", function (req, res) {
   res.sendFile(path.join(__dirname, "./doc-app-admin-panel/dist/index.html"));
 });
 
+// user frontend
+app.use(express.static(path.join(__dirname, "./client/dist")));
+
 //user routes
-app.use(function (req, res) {
+app.get("*",function (req, res) {
   res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
