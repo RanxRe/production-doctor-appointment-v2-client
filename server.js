@@ -39,12 +39,12 @@ app.use(express.static(path.join(__dirname, "./client/dist")));
 app.use("/admin", express.static(path.join(__dirname, "../doc-app-admin-panel/dist")));
 
 //admin routes
-app.get("/admin/*", function (req, res) {
+app.get("/admin/:path(*)", function (req, res) {
   res.sendFile(path.join(__dirname, "../doc-app-admin-panel/dist/index.html"));
 });
 
 //user routes
-app.get("*", function (req, res) {
+app.get("/:path(*)", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
