@@ -36,11 +36,11 @@ app.use("/api/v1/webmessage", webMsgRoutes);
 app.use(express.static(path.join(__dirname, "./client/dist")));
 
 // admin frontend
-app.use("/admin", express.static(path.join(__dirname, "../doc-app-admin-panel/dist")));
+app.use("/admin", express.static(path.join(__dirname, "./doc-app-admin-panel/dist")));
 
 //admin routes
 app.use("/admin", function (req, res) {
-  res.sendFile(path.join(__dirname, "../doc-app-admin-panel/dist/index.html"));
+  res.sendFile(path.join(__dirname, "./doc-app-admin-panel/dist/index.html"));
 });
 
 //user routes
