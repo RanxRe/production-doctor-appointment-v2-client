@@ -36,7 +36,7 @@ app.use("/api/v1/webmessage", webMsgRoutes);
 app.use("/admin", express.static(path.join(__dirname, "./doc-app-admin-panel/dist")));
 
 //admin routes
-app.get("/admin*", function (req, res) {
+app.get("/admin/*", function (req, res) {
   res.sendFile(path.join(__dirname, "./doc-app-admin-panel/dist/index.html"));
 });
 
